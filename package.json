@@ -4,7 +4,7 @@
   "description": "Aprendendo a realizar scrapping",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --inspect ./index.js "
   },
   "keywords": [
     "scrapping",
@@ -15,10 +15,14 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "crawler": "^1.2.2",
+    "htmlparser2": "^4.1.0",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "puppeteer": "^5.2.1",
     "puppeteer-extra": "^3.1.15",
     "puppeteer-extra-plugin-stealth": "^2.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
