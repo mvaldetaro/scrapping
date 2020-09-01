@@ -3,7 +3,7 @@ const reddit = require("./src/tasks/reddit");
 (async () => {
   await reddit.initialize("node");
 
-  let results = await reddit.getResults(10);
+  let results = await reddit.getResults(30);
 
-  console.log(results);
+  debugger;
 })();

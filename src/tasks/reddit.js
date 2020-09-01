@@ -14,6 +14,31 @@ const self = {
   },
 
   getResults: async (nr) => {
+    let results = [];
+
+    do {
+      let new_results = await self.parseResults();
+
+      results = [...results, ...new_results];
+
+      if (results.length < nr) {
+        let nextPageButton = await self.page.$(
+          'span[class="next-button"] > a[rel="nofollow next"]'
+        );
+
+        if (nextPageButton) {
+          await nextPageButton.click();
+          await self.page.waitForNavigation({ waitUntil: "networkidle0" });
+        } else {
+          break;
+        }
+      }
+    } while (results.length <= nr);
+
+    return results.slice(0, nr);
+  },
+
+  parseResults: async () => {
     let elements = await self.page.$$(
       '#siteTable > div[class*="thing"]:not(.promoted)'
     );
